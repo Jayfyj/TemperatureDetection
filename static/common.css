@@ -1,0 +1,21 @@
+*{
+	margin: 0;
+	padding: 0;
+  font-family: PingFangSC-Regular;
+  /* touch-action: none; */
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+body{
+  font-family: PingFangSC-Regular !important;
+}
+
+/* @media screen and (orientation: landscape) {
+	body {
+		transform: rotate(90deg);
+	}
+} */
