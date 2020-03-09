@@ -5,19 +5,25 @@
                 "checkdate":"20200202121212",
                 "chkresult":"0",
                 "epname":"jay",
-                "temperature":"36"
+                "temperature":"36.7"
             },
             {
                 "checkdate":"20200202121212",
-                "chkresult":"1",
+                "chkresult":"-1",
                 "epname":"jay",
-                "temperature":"36"
+                "temperature":"42.5"
             },
             {
                 "checkdate":"20200202121212",
-                "chkresult":"9",
+                "chkresult":"-9",
                 "epname":"jay",
-                "temperature":"36"
+                "temperature":""
+            },
+            {
+                "checkdate":"20200202121212",
+                "chkresult":"-2",
+                "epname":"jay",
+                "temperature":"36.7"
             }
         ]
             

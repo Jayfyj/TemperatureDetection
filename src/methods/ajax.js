@@ -17,7 +17,8 @@ var ajax = function (type,params,RES,ERR,url) {
     url = url;
   }else{
     //同一入口
-    url = "http://128.196.188.220:8101/osp_mng/iwap.ctrl";
+    // url = "http://128.196.188.220:8102/osp_mng/iwap.ctrl";
+    url = "http://cgh.ccb.com/osp_mng/iwap.ctrl";
   }
  
   //必须传的参数

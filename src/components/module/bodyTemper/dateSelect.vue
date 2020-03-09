@@ -44,13 +44,13 @@
                     <div><span>{{item.time}}</span></div>
                 </div>
                 <div class="dataTemperListChild">
-                    <span>{{item.epname}}</span>
+                    <span >{{item.epname}}</span>
                 </div>
                 <div class="dataTemperListChild">
                     <span>{{item.temperature}}°C</span>
                 </div>
                 <div class="dataTemperListChild">
-                    <span :style='{color:item.chkresult=="1"||item.chkresult=="9"?"red":""}'>{{item.CNStaus}}</span>
+                    <span :style='{color:item.chkresult=="-1"?"red":""}'>{{item.CNStaus}}</span>
                 </div>
             </div>
         </mt-loadmore>
@@ -85,9 +85,8 @@ export default {
             dateColor:1,
             timeVALUE:"today",
             date:[],
-            testURL:"./static/json/BodyTemper.json",
-            // testURL:"http://128.192.182.74/osp_mng/iwap.ctrl",
-            // testURL:"http://128.196.188.220:8101/osp_mng/iwap.ctrl",
+            // testURL:"./static/json/BodyTemper.json",
+            testURL:"http://128.196.188.220:8101/osp_mng/iwap.ctrl",
             //选择的值
             val:"",
             //是否调出选择框
@@ -96,9 +95,9 @@ export default {
             slots: [{"name":"昨日","value":"yesterday"},{"name":"今日","value":"today"},{"name":"自定义","value":""}],
             cnStaus:{
                 "0":"正常",
-                "1":"体温异常",
-                "2":"人脸识别识别",
-                "9":"其他异常"
+                "-1":"体温异常",
+                "-2":"人脸识别失败",
+                "-9":"其他异常"
             },
             dateTemperList:[],
             flag:true,
@@ -284,7 +283,6 @@ export default {
                     var inp = document.getElementsByClassName("mint-msgbox-input")[0].children[0];
                     inp.setAttribute("maxlength",'8');
                     title.innerHTML ='';
-                    console.log(inp)
                 },0)
                 this.$messagebox.prompt('请输入查询日期(格式为'+this.nowDATE+')'
                 ).then(({ value, action }) => {
@@ -297,21 +295,21 @@ export default {
                         this.dateColor = index;
                         this.val = this.timeVALUE.split("")[0] + this.timeVALUE.split("")[1] +this.timeVALUE.split("")[2] +this.timeVALUE.split("")[3] + "-"
                         this.val += this.timeVALUE.split("")[4] + this.timeVALUE.split("")[5] + "-" + this.timeVALUE.split("")[6] + this.timeVALUE.split("")[7]
-                        console.log(this.val)
+
                         this.getData()
                     }else{
                         var alterHtml = "格式不正确，请重输";
                         var alterTitle = "";
                         setTimeout(()=>{
-                            // var title = document.getElementsByClassName("mint-msgbox-title")[0]
+                            
                             var content = document.getElementsByClassName('mint-msgbox-message')[0];
                             content.setAttribute("style","text-align:left;")
-                            // title.innerHTML=""
+                            
                         },0)
                         this.$messagebox.alert(alterHtml,alterTitle);
                     }
                 }).catch(({ value, action }) => {
-    
+                    // this.popupVisible = false;
                 })
             }else{
                 this.pageNo = 0;
@@ -388,7 +386,7 @@ export default {
             d = d < 10 ? ('0' + d) : d;
             this.timeVALUE = day.getFullYear()+"-" + m + "-" + d;
             this.val = this.timeVALUE;
-            console.log(this.timeVALUE)
+
             this.getData();
             
         },
